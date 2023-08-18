@@ -30,9 +30,6 @@ export default function Quizz() {
                 const shuffledQuestions = data.results.map(questionData => {
                     const { question, incorrect_answers, correct_answer } = questionData
                     //const answers = shuffleArray([...incorrect_answers, correct_answer])
-
-                    console.log(questionData)
-
                     return {
                         question: he.decode(question),
                         correct_answer: he.decode(correct_answer),
@@ -69,12 +66,19 @@ export default function Quizz() {
     function showResults() {
         const correctAnswers = questions.map(question => question.correct_answer)
 
-        selectedAnswers.forEach((selectedAnswer, index) => {
-            const label = document.getElementById(`label_${index}`)
-            if (selectedAnswer === correctAnswers[index]) {
+        selectedAnswers.forEach((selectedAnswer, questionIndex) => {
+            const answerIndex = questions[questionIndex].answers.indexOf(selectedAnswer)
+            const label = document.getElementById(`label_${questionIndex}_${answerIndex}`)
+            if (selectedAnswer === correctAnswers[questionIndex]) {
                 label.classList.add('correct-answer')
             } else{
                 label.classList.add('incorrect-answer')
+                const correctAnswerIndex = questions[questionIndex].answers.indexOf(correctAnswers[questionIndex])
+                const correctLabelId = `label_${questionIndex}_${correctAnswerIndex}`
+                const correctLabel = document.getElementById(correctLabelId)
+                if(correctLabel){
+                    correctLabel.classList.add('correct-answer')
+                }
             }
         })
 
@@ -106,7 +110,7 @@ export default function Quizz() {
                                                 />
                                             <label className={`question-input ${selectedAnswers[index] === answer ? 'selected' : ''}`}
                                             htmlFor={`question_${index}_${answerIndex}`}
-                                            id={`label_${index}`}
+                                            id={`label_${index}_${answerIndex}`}
                                             >
                                                 {he.decode(answer)}
                                             </label>

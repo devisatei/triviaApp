@@ -12,8 +12,6 @@ export default function FirstPage(props) {
                 <option value="easy">Medium</option>
                 <option value="easy">Hard</option>
             </select>
-            <select>
-            </select>
         </main>
     )
 }
