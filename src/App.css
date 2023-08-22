@@ -11,6 +11,31 @@
   line-height: normal;
 }
 
+.initial-btns{
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+
+.initial-btns > button {
+  margin-right: 1rem;
+  flex-shrink: 0;
+  color: #F5F7FB;;
+  background: #4D5B9E;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.initial-btns > select {
+  color: rgb(236, 189, 22);
+  background: #ae0c3f;
+  outline: none;
+  border-radius: 5px;
+  font-size: smaller;
+  font-weight: bolder;
+}
+
 /* IMAGES DIVS */
 .background-image-left {
   position: fixed;
@@ -115,6 +140,7 @@ input[type="radio"] {
   background: #D6DBF5;
   color: #293264;
   border-color: #D6DBF5;
+  outline: none;
 }
 
 .submit-quizz-btn{
@@ -144,6 +170,7 @@ input[type="radio"] {
   font-family: 'Inter';
   font-size: 14px;
   font-weight: 500;
+  outline: none;
 }
 
 .incorrect-answer{
@@ -153,5 +180,6 @@ input[type="radio"] {
   font-family: 'Inter';
   font-size: 14px;
   font-weight: 500;
+  outline: none;
 }
 /* INITIAL PAGE STYLES */

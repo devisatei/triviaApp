@@ -9,6 +9,10 @@ export default function Quizz() {
 
     const [submitButtonClicked, setSubmitButtonClicked] = useState(false)
 
+    const correctAnswersCounter = questions.reduce((count, question, index) => {
+        return question.correct_answer === selectedAnswers[index] ? count + 1 : count
+    }, 0)
+
     const shuffleArray = (array) => {
         for (let i = array.length - 1; i > 0; i--){
             const j = Math.floor(Math.random() * (i + 1))
@@ -35,7 +39,6 @@ export default function Quizz() {
                         answers: answersArray.map(answer => he.decode(answer))
                     }
                 })
-                console.log(shuffledQuestions)
 
                 setQuestions(shuffledQuestions) 
                 setSelectedAnwers(new Array(shuffledQuestions.length).fill(null));
@@ -85,6 +88,11 @@ export default function Quizz() {
         document.getElementById('result-div').classList.remove('hidden')
     }
 
+
+    function restartGame() {
+        window.location.reload()
+    }
+
     console.log(questions)
     console.log(selectedAnswers)
 
@@ -132,8 +140,8 @@ export default function Quizz() {
                 >Submit Answers</button>
             </form>
             <div id="result-div" className="hidden">
-                <h3>You got X of {selectedAnswers.length} questions correct!</h3>
-                <button className="play-again-btn">Play again.</button>
+                <h3>You got {correctAnswersCounter} of {selectedAnswers.length} questions correct!</h3>
+                <button className="play-again-btn" onClick={restartGame}>Play again.</button>
             </div>
         </main>
     ) 
