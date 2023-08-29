@@ -1,7 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import he from 'he';
+import { DifficultyContext } from './App'
 
 export default function Quizz() {
+
+    const {selectedDifficulty, numQuestions} = useContext(DifficultyContext)
 
     const [questions, setQuestions] = useState([])
 
@@ -26,7 +29,12 @@ export default function Quizz() {
     useEffect(() => {
         const fetchTriviaQuestions = async () => {
             try {
-                const res = await fetch('https://opentdb.com/api.php?amount=5&difficulty=easy')
+                let apiUrl = `https://opentdb.com/api.php?amount=${numQuestions}`
+                if (selectedDifficulty !== 'any') {
+                    apiUrl += `&difficulty=${selectedDifficulty}`
+                } 
+
+                const res = await fetch(apiUrl)
                 const data = await res.json()
                 
                 //shuffling answers for each question
@@ -47,7 +55,7 @@ export default function Quizz() {
             }
         } 
         fetchTriviaQuestions()
-    }, [])
+    }, [selectedDifficulty, numQuestions])
 
     function handleSelection(questionIndex, selectedAnswer) {
         if(!submitButtonClicked){
@@ -92,9 +100,6 @@ export default function Quizz() {
     function restartGame() {
         window.location.reload()
     }
-
-    console.log(questions)
-    console.log(selectedAnswers)
 
     return (
         <main className="container" style={{ position: 'relative' }}>

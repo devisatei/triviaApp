@@ -28,12 +28,11 @@
 }
 
 .initial-btns > select {
-  color: rgb(236, 189, 22);
-  background: #ae0c3f;
+  color: whitesmoke;
+  background: black;
   outline: none;
   border-radius: 5px;
   font-size: smaller;
-  font-weight: bolder;
 }
 
 /* IMAGES DIVS */
