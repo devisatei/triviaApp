@@ -35,28 +35,7 @@
   font-size: smaller;
 }
 
-/* IMAGES DIVS */
-.background-image-left {
-  position: fixed;
-  top: 0px;
-  left: 92%;
-  background-image: url('../blob_2.png');
-  width: 200px; /* Set the appropriate width for your image */
-  height: 140px; /* Set the appropriate height for your image */
-  background-size: cover;
-  z-index: -1; /* Place the image behind the content */
-}
 
-.background-image-right {
-  position: fixed;
-  bottom: 0%;
-  right: 92%;
-  background-image: url('../blob_1.png');
-  width: 300px; /* Set the appropriate width for your image */
-  height: 240px; /* Set the appropriate height for your image */
-  background-size: cover;
-  z-index: -1; /* Place the image behind the content */
-}
 
 /* CONTAINERS AND DETAILS STYLING */
 .container{
